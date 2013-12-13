@@ -55,3 +55,46 @@ github "xquartz",    "1.1.0"
 
 # Optional/custom modules. There are tons available at
 # https://github.com/boxen.
+
+
+## custmize
+#
+github "osx",            "1.6.0"
+
+# lib
+github "java",           "1.1.0"
+github "apache",         "0.0.2", :repo => "webflo/boxen-puppet-apache"
+#github "php",            "1.1.4", :repo => "tikitikipoo/puppet-php"
+
+mod "php", :git => "git://github.com/tikitikipoo/puppet-php.git"
+
+github "apache_php",     "0.0.2", :repo => "webflo/puppet-apache_php"
+github "autoconf",       "1.0.0" # use for php
+github "libtool",        "1.0.0" # use for php
+github "pcre",           "1.0.0" # use for php
+github "libpng",         "1.0.0" # use for php
+github "wget",           "1.0.0"
+github "imagemagick",    "1.2.1"
+github "vagrant",        "3.0.1"
+github "mysql",          "1.1.5"
+# github "pkgconfig",      "1.0.0" # use for php でフォルト(上)にある
+# github "qt",             "1.0.1" # use for capybara-webkit # 今は必要ない
+# github "zsh",            "1.0.0" # 今は必要ない
+# github "heroku",         "2.0.0" # 今は必要ない
+# github "postgresql",     "2.2.2" # postgres.app使いたい
+# github "sysctl",         "1.0.0" # use for postgresql
+# github "redis",          "0.3.0" # 今は必要ない
+# github "phantomjs",      "2.0.2" # 今は必要ない
+
+# local application for develop
+github "pgadmin3",       "1.0.0"
+github "sequel_pro",     "1.0.1"
+github "virtualbox",     "1.0.9"
+github "sublime_text_2", "1.1.2"
+github "chrome",         "1.1.2"
+github "firefox",        "1.1.5"
+github "cyberduck",      "1.0.1"
+
+# local application for utility
+github "skype",          "1.0.7"
+
