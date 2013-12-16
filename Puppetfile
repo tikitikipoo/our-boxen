@@ -59,32 +59,20 @@ github "xquartz",    "1.1.0"
 
 ## custmize
 #
-github "osx",            "1.6.0"
+github "osx",            "2.2.1"
 
 # lib
-github "java",           "1.1.0"
-github "apache",         "0.0.2", :repo => "webflo/boxen-puppet-apache"
-#github "php",            "1.1.4", :repo => "tikitikipoo/puppet-php"
-
-mod "php", :git => "git://github.com/tikitikipoo/puppet-php.git"
-
-github "apache_php",     "0.0.2", :repo => "webflo/puppet-apache_php"
-github "autoconf",       "1.0.0" # use for php
-github "libtool",        "1.0.0" # use for php
-github "pcre",           "1.0.0" # use for php
-github "libpng",         "1.0.0" # use for php
+github "java",           "1.2.0"
 github "wget",           "1.0.0"
 github "imagemagick",    "1.2.1"
 github "vagrant",        "3.0.1"
-github "mysql",          "1.1.5"
-# github "pkgconfig",      "1.0.0" # use for php でフォルト(上)にある
-# github "qt",             "1.0.1" # use for capybara-webkit # 今は必要ない
-# github "zsh",            "1.0.0" # 今は必要ない
-# github "heroku",         "2.0.0" # 今は必要ない
-# github "postgresql",     "2.2.2" # postgres.app使いたい
-# github "sysctl",         "1.0.0" # use for postgresql
-# github "redis",          "0.3.0" # 今は必要ない
-# github "phantomjs",      "2.0.2" # 今は必要ない
+
+# github "qt",             "1.0.1"
+# github "zsh",            "1.0.0"
+# github "heroku",         "2.0.0"
+# github "sysctl",         "1.0.0"
+# github "redis",          "0.3.0"
+# github "phantomjs",      "2.0.2"
 
 # local application for develop
 github "pgadmin3",       "1.0.0"

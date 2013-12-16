@@ -41,66 +41,12 @@ class people::tikitikipoo {
 
   ## lib
   #
-  include apache
   include java
-  include php::5_4_17
-  include php::5_3_23
-
-  include php::composer
-
-  $global_php_version = '5.4.17'
-  $minor_php_version = '5.3.23'
-
-  class { 'php::global':
-    version => $global_php_version
-  }
-
-#  php::local { '/Users/tikitikipoo/workspace/php5.3project':
-#    version => $minor_php_version
-#  }
-
-#  php::extension::pgsql { "pgsql for ${global_php_version}":
-#   php => $global_php_version,
-#  }
-
-  php::extension::mcrypt { "mcrypt for ${global_php_version}":
-    php => $global_php_version,
-  }
-
-  php::extension::pdo_dblib { "pdo_dblib for ${global_php_version}":
-    php => $global_php_version,
-  }
-
-  php::extension::apc { "apc for ${global_php_version}":
-    php => $global_php_version,
-  }
-
-  php::extension::xdebug { "xdebug for ${global_php_version}":
-    php => $global_php_version,
-  }
-
-  php::extension::mcrypt { "mcrypt for ${minor_php_version}":
-    php => $minor_php_version,
-  }
-
-  php::extension::pdo_dblib { "pdo_dblib for ${minor_php_version}":
-    php => $minor_php_version,
-  }
-
-  php::extension::apc { "apc for ${minor_php_version}":
-    php => $minor_php_version,
-  }
-
-  php::extension::xdebug { "xdebug for ${minor_php_version}":
-    php => $minor_php_version,
-  }
-
-#  include postgresql
-  include mysql
-#  include redis
   include wget
-#  include zsh
   include imagemagick
+
+#  include zsh
+#  include redis
 #  include phantomjs
 #  phantomjs::version { '1.9.2': }
 #  include heroku
@@ -118,11 +64,6 @@ class people::tikitikipoo {
     gem     => 'knife-solo',
     ruby    => '2.0.0-p247'
   }
-#  ruby::gem { "rubocop for 2.0.0-p247":
-#    gem     => 'rubocop',
-#    ruby    => '2.0.0-p247'
-#  }
-
 
   ## local application for develop
   #
@@ -130,9 +71,7 @@ class people::tikitikipoo {
   include sequel_pro
   include virtualbox
   include vagrant
-  vagrant::plugin { 'vagrant-aws': }
   vagrant::plugin { 'vagrant-berkshelf': }
-#  vagrant::plugin { 'vagrant-omnibus': }
   include sublime_text_2
   sublime_text_2::package { 'Emmet':
     source => 'sergeche/emmet-sublime'
@@ -150,12 +89,15 @@ class people::tikitikipoo {
   homebrew::tap { 'homebrew/binary': }
   package {
     [
+      'httpd',                      # apache
+      'tree',                       # linux tree cmd
+      'proctools',                  # kill by process name. like $ pkill firefox
+      'packer'                      # vagrant box maker
+
 #      'readline',                   # use for ruby compile
 #      'coreutils',                  # change mac command to like GNU Linux
-      'tree',                       # linux tree cmd
 #      'z',                          # shortcut change dir
 #      'the_silver_searcher',        # alternative grep
-      'proctools',                  # kill by process name. like $ pkill firefox
 #      'graphviz',                   # graph generator (use for rails-erd)
 #      'ctags',                      # vim compel
 #      'tmux',                       # terminal session
@@ -165,7 +107,6 @@ class people::tikitikipoo {
 #      'ec2-api-tools',              # aws cli tools
 #      'ec2-ami-tools',              # aws cli tools
 #      'putty',                      # use convert ppk key to OpenSSH format
-      'packer'                      # vagrant box maker
 #       'ghc',
 #       'haskell-platform'
     ]:
