@@ -87,6 +87,7 @@ class people::tikitikipoo {
   ## via homebrew
   #
   homebrew::tap { 'homebrew/binary': }
+  homebrew::tap { 'homebrew/dupes': }
   package {
     [
       'httpd',                      # apache
@@ -118,6 +119,12 @@ class people::tikitikipoo {
    'ClamXav':
       source   => "http://www.clamxav.com/downloads/ClamXav_2.6.1.dmg",
       provider => appdmg;
+  }
+
+  package { 
+    'GoogleJapaneseInput':                                                           
+      source => "http://dl.google.com/japanese-ime/latest/GoogleJapaneseInput.dmg",
+      provider => pkgdmg;                                                          
   }
 
   ## dotfile setting
