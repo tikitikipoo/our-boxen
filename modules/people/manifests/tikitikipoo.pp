@@ -127,6 +127,12 @@ class people::tikitikipoo {
       provider => pkgdmg;                                                          
   }
 
+  package { 
+    'TotalTerminal':                                                           
+      source => "http://downloads.binaryage.com/TotalTerminal-1.4.6.dmg",
+      provider => pkgdmg;                                                          
+  }
+
   ## dotfile setting
   #
   $home     = "/Users/${::boxen_user}"
