@@ -1,4 +1,9 @@
 GITHUBTARBALL
+  remote: boxelly/puppet-macvim_kaoriya
+  specs:
+    macvim_kaoriya (1.0.0)
+
+GITHUBTARBALL
   remote: boxen/puppet-boxen
   specs:
     boxen (3.3.4)
@@ -173,6 +178,7 @@ DEPENDENCIES
   imagemagick (= 1.2.1)
   inifile (= 1.0.0)
   java (= 1.2.0)
+  macvim_kaoriya (= 1.0.0)
   nginx (= 1.4.2)
   nodejs (= 3.3.0)
   openssl (= 1.0.0)

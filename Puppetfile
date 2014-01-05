@@ -82,6 +82,7 @@ github "sublime_text_2", "1.1.2"
 github "chrome",         "1.1.2"
 github "firefox",        "1.1.5"
 github "cyberduck",      "1.0.1"
+github "macvim_kaoriya", "1.0.0", :repo => "boxelly/puppet-macvim_kaoriya"
 
 # local application for utility
 github "skype",          "1.0.7"

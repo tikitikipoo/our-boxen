@@ -79,6 +79,7 @@ class people::tikitikipoo {
   include cyberduck
   include firefox
   include chrome
+  include macvim_kaoriya
 
   ## local application for utility
   #
@@ -87,10 +88,15 @@ class people::tikitikipoo {
   ## via homebrew
   #
   homebrew::tap { 'homebrew/binary': }
-  homebrew::tap { 'homebrew/dupes': }
+  homebrew::tap { 'homebrew/dupes': } # httpd
   package {
     [
       'httpd',                      # apache
+      're2c',                       # for php
+      'jpeg',                       # for php
+      'libmcrypt',                  # for php
+      'libpng',                     # for php
+      'libtool',                    # for php
       'tree',                       # linux tree cmd
       'proctools',                  # kill by process name. like $ pkill firefox
       'packer'                      # vagrant box maker
@@ -121,21 +127,86 @@ class people::tikitikipoo {
       provider => appdmg;
   }
 
-  package { 
-    'GoogleJapaneseInput':                                                           
+  package {
+    'GoogleJapaneseInput':
       source => "http://dl.google.com/japanese-ime/latest/GoogleJapaneseInput.dmg",
-      provider => pkgdmg;                                                          
+      provider => pkgdmg;
   }
 
-  package { 
-    'TotalTerminal':                                                           
+  package {
+    'TotalTerminal':
       source => "http://downloads.binaryage.com/TotalTerminal-1.4.6.dmg",
-      provider => pkgdmg;                                                          
+      provider => pkgdmg;
   }
 
   ## dotfile setting
   #
   $home     = "/Users/${::boxen_user}"
-  $dotfiles = "${home}/dotfiles"
+  $dotfiles = "${home}/my-boxen-dotfiles"
+
+  file { $home:
+    ensure  => directory
+  }
+
+  repository {
+    $dotfiles:
+      source   => 'git@github.com:tikitikipoo/my-boxen-dotfiles.git',
+      require => File[$home],
+      provider => 'git';
+  }
+
+  ## bash
+  #
+  file { "/Users/${::boxen_user}/.bash_profile":
+    target  => "/Users/${::boxen_user}/my-boxen-dotfiles/.bash_profile",
+    require => Repository[$dotfiles]
+  }
+
+
+  ## vim
+  #
+  $vim      = "${home}/.vim"
+  $bundle   = "${vim}/bundle"
+  $autoload = "${vim}/userautoload"
+
+  file { $bundle:
+    ensure => "directory",
+  }
+  file { $autoload:
+    ensure => "directory",
+  }
+
+  repository { $neobundle:
+    source => "git@github.com:Shougo/neobundle.vim",
+    path => "${bundle}/neobundle.vim"
+  }
+
+  file { "/Users/${::boxen_user}/.vimrc":
+    target  => "/Users/${::boxen_user}/my-boxen-dotfiles/.vimrc",
+    require => Repository[$dotfiles]
+  }
+
+  exec { "neoinstall":
+    command => "${bundle}/neobundle.vim/bin/neoinstall"
+  }
+
+  file { "${autoload}/basic.vim":
+    source => "/Users/${::boxen_user}/my-boxen-dotfiles/userautoload/basic.vim",
+    mode => '0644',
+    owner => 'tikitikipoo',
+    group => 'staff'
+  }
+  file { "${autoload}/color.vim":
+    source => "/Users/${::boxen_user}/my-boxen-dotfiles/userautoload/color.vim",
+    mode => '0644',
+    owner => 'tikitikipoo',
+    group => 'staff'
+  }
+  file { "${autoload}/editor.vim":
+    source => "/Users/${::boxen_user}/my-boxen-dotfiles/userautoload/editor.vim",
+    mode => '0644',
+    owner => 'tikitikipoo',
+    group => 'staff'
+  }
 
 }
