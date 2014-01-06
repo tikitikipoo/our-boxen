@@ -139,6 +139,12 @@ class people::tikitikipoo {
       provider => pkgdmg;
   }
 
+  package {
+    'CotEditor':
+      source => "http://sourceforge.jp/frs/redir.php?m=jaist&f=%2Fcoteditor%2F54872%2FCotEditor_1.3.1_For10.7.dmg",
+      provider => appdmg;
+  }
+
   ## dotfile setting
   #
   $home     = "/Users/${::boxen_user}"
